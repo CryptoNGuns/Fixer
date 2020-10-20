@@ -14,13 +14,10 @@ Prerequisites:
 # Installation:
 Create virtual environment in your python setup:
 
-pwd
--> <SOMETHING>/FreeMemo
-  
-cd ./run
-
-python3 -m venv venv
-
-virtualenv venv
-
-source venv/bin/activate
+0. pwd
+-> <SOMETHING>/FreeMemo  
+1. cd ./run
+2. python3 -m venv venv
+3. virtualenv venv
+4. source venv/bin/activate
+5. (venv) $ pip install flask

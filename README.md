@@ -14,7 +14,8 @@
 # Installation:
 Create virtual environment in your python setup:
 
-0. pwd \r
+0. pwd
+
 (should return): ||SOMETHING||/FreeMemo  
 1. cd ./run
 2. python3 -m venv venv

@@ -1,8 +1,8 @@
 # FreeMemo
 
-Don't pay for the ability to learn!
+## Don't pay for the ability to learn!
 
-Prerequisites:
+# Prerequisites:
 0. Linux
 1. Python3
 2. PostgreSQL database up and running

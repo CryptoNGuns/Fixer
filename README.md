@@ -20,5 +20,5 @@ Create virtual environment in your python setup:
 3. virtualenv venv
 4. source venv/bin/activate
 5. (venv) $ pip install flask
-6. export FLASK_APP=FreeMemo.py
-7. flask run --host=0.0.0.0
+6. (venv) $ export FLASK_APP=FreeMemo.py
+7. (venv) $ flask run --host=0.0.0.0

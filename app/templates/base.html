@@ -1,0 +1,14 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - FreeMemo</title>
+      {% else %}
+      <title>Welcome to FreeMemo</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>FreeMemo: <a href="/index">Home</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,3 +1,3 @@
 # FreeMemo
 
-Don't pay for ability to learn!
+Don't pay for the ability to learn!

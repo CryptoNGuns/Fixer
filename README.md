@@ -18,6 +18,9 @@ pwd
 -> <SOMETHING>/FreeMemo
   
 cd ./run
+
 python3 -m venv venv
+
 virtualenv venv
+
 source venv/bin/activate

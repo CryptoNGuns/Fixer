@@ -20,8 +20,7 @@ Create virtual environment in your python setup:
 3. virtualenv venv
 4. source venv/bin/activate
 5. (venv) $ pip install flask
-6. 
-7. (venv) $ pip install flask-wtf
+6. (venv) $ pip install flask-wtf
 
 # Run
 (venv) $ flask run --host=0.0.0.0

@@ -22,6 +22,7 @@ Create virtual environment in your python setup:
 5. (venv) $ pip install flask
 6. (venv) $ pip install flask-wtf
 7. (venv) $ pip install flask-sqlalchemy
+8. (venv) $ pip install flask-migrate
 
 # Run
 (venv) $ flask run --host=0.0.0.0

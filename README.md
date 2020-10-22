@@ -8,9 +8,6 @@
 2. PostgreSQL database up and running
 
 
-
-
-
 # Installation:
 Create virtual environment in your python setup:
 
@@ -23,6 +20,7 @@ Create virtual environment in your python setup:
 6. (venv) $ pip install flask-wtf
 7. (venv) $ pip install flask-sqlalchemy
 8. (venv) $ pip install flask-migrate
+9. (venv) $ pip install psycopg2-binary
 
 # Run
 (venv) $ flask run --host=0.0.0.0

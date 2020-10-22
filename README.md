@@ -22,7 +22,7 @@ Create virtual environment in your python setup:
 8. (venv) $ pip install flask-migrate
 9. (venv) $ pip install psycopg2-binary
 
-Set database URL (you need to create postgressql database named 'freememo_db', expose its port, and create user 'freememo' that has all privileges granted to database 'freememo_db')
+Set database URL (you need to install and create PostgresSQL database named 'freememo_db', expose its port and create user 'freememo' who has all privileges granted to 'freememo_db' database )
 
 10. (venv) $ DATABASE_URL="postgresql://postgres:freememo@<DATABASE_IP>:<DATABASE_PORT>/freememo_db"
 

@@ -21,10 +21,11 @@ Create virtual environment in your python setup:
 7. (venv) $ pip install flask-sqlalchemy
 8. (venv) $ pip install flask-migrate
 9. (venv) $ pip install psycopg2-binary
+10.(venv) $pip install flask-login
 
 Set database URL (you need to install and create PostgresSQL database named 'freememo_db', expose its port and create user 'freememo' who has all privileges granted to 'freememo_db' database ), after that create new environment variable called DATABASE_URL as below, but put your database credential inside <...> fields
 
-10. (venv) $ DATABASE_URL="postgresql://freememo:<FREEMEMO_USER_PASSWORD>@<DATABASE_IP>:<DATABASE_PORT>/freememo_db"
+(venv) $ DATABASE_URL="postgresql://freememo:<FREEMEMO_USER_PASSWORD>@<DATABASE_IP>:<DATABASE_PORT>/freememo_db"
 
 # Run
 (venv) $ flask run --host=0.0.0.0

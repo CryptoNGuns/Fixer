@@ -14,7 +14,7 @@ Create virtual environment in your python setup:
 0. pwd -> (should return): ||SOMETHING||/FreeMemo  
 1. cd ./run
 2. python3 -m venv venv
-3. virtualenv venv
+3. virtualenv -p python3 venv
 4. source venv/bin/activate
 5. (venv) $ pip install flask
 6. (venv) $ pip install flask-wtf

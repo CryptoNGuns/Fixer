@@ -1,24 +1,32 @@
 <html>
     <head>
       {% if title %}
-      <title>{{ title }} - FreeMemo</title>
+		<title>{{ title }} - FreeMemo</title>
       {% else %}
-      <title>Welcome to FreeMemo</title>
+		<title>Welcome to FreeMemo</title>
       {% endif %}
     </head>
     <body>
         <div>FreeMemo: 
 	<a href="{{ url_for('index') }}">Home</a>
-	<a href="{{ url_for('login') }}">Login</a></div>
+	<a href="{{ url_for('explore') }}">Explore</a>
+	{% if current_user.is_anonymous %}
+		<a href="{{ url_for('login') }}">Login</a>
+		<a href="{{ url_for('register') }}">Register</a></div>
+	{% else %}
+		<a href="{{ url_for('profile', username=current_user.username) }}">Profile</a>
+		<a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+	</div>
         <hr>
 	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	<ul>
-		{% for message in messages %}
-		<li>{{ message }}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
+		{% if messages %}
+			<ul>
+			{% for message in messages %}
+				<li>{{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
 	{% endwith %}
         {% block content %}{% endblock %}
     </body>

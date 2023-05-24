@@ -20,9 +20,20 @@ def index():
         db.session.add(new_post)
         db.session.commit()
         return redirect(url_for('index'))
-    posts = current_user.followed_posts().paginate(1, 10, False).items
+    page = request.args.get('page', 1, type=int)
+    posts = current_user.followed_posts().paginate(
+        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False
+    )
+    next_url = url_for('index', page=posts.next_num) \
+        if posts.has_next else None
+    number_of_pages=posts.pages
+    pages_list = []
+    for page_num in range(number_of_pages):
+        pages_list.append(url_for('index', page=page_num+1))
+    prev_url = url_for('index', page=posts.prev_num) \
+        if posts.has_prev else None
 
-    return render_template('index.html', title='Home', posts=posts, form=form)
+    return render_template('index.html', title='Home', posts=posts.items, form=form, next_url=next_url, prev_url=prev_url, number_of_pages=number_of_pages, pages_list=pages_list, current_page=page)
 #    return render_template('index.html', user=user)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -70,15 +81,28 @@ def register():
         flash('Congratulations, you are now a registered user! You can login now')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
-    
+
 @app.route('/profile/<username>')
 @login_required
 def profile(username):
     user = User.query.filter_by(username=username).first_or_404()
     #posts = Post.query.filter_by(user_id=user.id) # this also works but below we are using relation
-    posts = user.posts.all()
+    page = request.args.get('page', 1, type=int)
+    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
+        page=page,per_page=app.config['POSTS_PER_PAGE'], error_out=False
+    )
+    next_url = url_for('profile', username=user.username, page=posts.next_num) \
+        if posts.has_next else None
+    number_of_pages = posts.pages
+    pages_list = []
+    for page_num in range(number_of_pages):
+        pages_list.append(url_for('profile',username=user.username,page=page_num + 1))
+    prev_url = url_for('profile', username=user.username, page=posts.prev_num) \
+        if posts.has_prev else None
+
     form = EmptyForm()
-    return render_template('profile.html', user=user, posts=posts, form=form)
+    return render_template('profile.html', user=user, posts=posts, form=form, next_url=next_url, prev_url=prev_url, number_of_pages=number_of_pages,
+                           pages_list=pages_list, current_page=page)
     
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
@@ -140,8 +164,21 @@ def unfollow_frontend(username):
 @app.route('/explore')
 @login_required
 def explore():
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('index.html', title='Explore', posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False
+    )
+    next_url = url_for('explore', page=posts.next_num) \
+        if posts.has_next else None
+    number_of_pages = posts.pages
+    pages_list = []
+    for page_num in range(number_of_pages):
+        pages_list.append(url_for('explore', page=page_num + 1))
+    prev_url = url_for('explore', page=posts.prev_num) \
+        if posts.has_prev else None
+
+    return render_template('index.html', title='Explore', posts=posts, next_url=next_url, prev_url=prev_url, number_of_pages=number_of_pages,
+                           pages_list=pages_list, current_page=page)
 
 
 @app.route('/websocket')

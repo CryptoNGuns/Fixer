@@ -1,8 +1,8 @@
 # Fixer.cy - my side business webpage source code
 
- Q: Why I share it to you?
+ Q: Why do I share it to you?
 
- A: Actually, I am sharing it to my potential PRIMARY business partners (who are looking for DevOPS engineers) to let them know my  Python skills level xD But if you find my code useful, feel free to explore!
+ A: Actually, I am sharing it to my potential PRIMARY business partners (who are looking for skilled DevOPS engineers) to show them my Python/SQLAlchemy/Postgres skills level :) But if you find my code useful, feel free to explore and use it!
 
 
 # Prerequisites:

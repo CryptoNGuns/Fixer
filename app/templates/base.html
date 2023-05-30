@@ -1,13 +1,13 @@
 <html>
     <head>
       {% if title %}
-		<title>{{ title }} - FreeMemo</title>
+		<title>{{ title }} - Fixer</title>
       {% else %}
-		<title>Welcome to FreeMemo</title>
+		<title>Welcome to Fixer</title>
       {% endif %}
     </head>
     <body>
-        <div>FreeMemo: 
+        <div>Fixer:
 	<a href="{{ url_for('index') }}">Home</a>
 	<a href="{{ url_for('explore') }}">Explore</a>
 	{% if current_user.is_anonymous %}

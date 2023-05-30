@@ -1,7 +1,7 @@
 # Fixer.cy - my side business webpage source code
 
-# Why I share it to you?
-# I am sharing it to my potential PRIMARY business partners to let them know how much I know xD
+ Q:Why I share it to you?
+ A:I am sharing it to my potential PRIMARY business partners to let them know how much I know xD
 
 
 # Prerequisites:

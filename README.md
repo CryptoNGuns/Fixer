@@ -1,6 +1,8 @@
-# FreeMemo
+# Fixer.cy - my side business webpage source code
 
-## Don't pay for the ability to learn!
+# Why I share it to you?
+# I am sharing it to my potential PRIMARY business partners to let them know how much I know xD
+
 
 # Prerequisites:
 0. Linux/MacOS/WSL 2

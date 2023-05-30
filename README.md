@@ -35,4 +35,6 @@ Set database URL (you need to install and create PostgresSQL database named 'fix
 (venv) $ DATABASE_URL="postgresql://fixer:<FREEMEMO_USER_PASSWORD>@<DATABASE_IP>:<DATABASE_PORT>/fixer_db"
 
 # Run
-(venv) $ flask run --host=0.0.0.0
+(venv) $ flask run --host=0.0.0.0:1990
+
+use the port 1990 or the other that you choose :)

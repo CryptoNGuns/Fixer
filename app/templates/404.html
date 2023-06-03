@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block main %}
+{{ super() }}
+    <section class="flask_backend_content">
 	<img src="{{url_for('static', filename='404.png')}}" />
+	</section>
 {% endblock %}

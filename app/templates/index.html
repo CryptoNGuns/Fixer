@@ -1,34 +1,207 @@
 {% extends "base.html" %}
-{% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
+{% block main %}
+ <div class="hero_area">
+            <!-- slider section -->
+            <section class=" slider_section position-relative">
+              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="container">
+                      <div class="box">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="detail-box">
+                              <div>
+                                <h1>
+                                  Yellow slip
+                                </h1>
+                                <h2>
+                                  Pomoc w uzyskaniu rezydentury
+                                </h2>
+                                <div class="">
+                                  <a href="">
+                                    Get Started
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <div class="img-box">
+                              <img src={{url_for('static', filename='Cyprus-yellow-slip.jpg')}} width="350" height="489"  />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="box">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="detail-box">
+                              <div>
+                                <h1>
+                                  Nieruchomości
+                                </h1>
+                                <h2>
+                                  Najem i kupno
+                                </h2>
+                                <div class="">
+                                  <a href="">
+                                    Get Started
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <div class="img-box">
+                            <!--  <img src={{url_for('static', filename='slider-img.png')}} alt="" /> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="box">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="detail-box">
+                              <div>
+                                <h1>
+                                  Kredyt na mieszkanie
+                                </h1>
+                                <h2>
+                                  Pomoc w uzyskaniu
+                                </h2>
+                                <div class="">
+                                  <a href="">
+                                    Get Started
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <div class="img-box">
+                              <img src={{url_for('static', filename='DEHNEO_black_bank_building.png')}} alt="" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="box">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="detail-box">
+                              <div>
+                                <h1>
+                                  Digital Currency
+                                </h1>
+                                <h2>
+                                  The Future of Trading.
+                                </h2>
+                                <div class="">
+                                  <a href="">
+                                    Get Started
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <div class="img-box">
+                      <!--         <img src={{url_for('static', filename='slider-img.png')}} alt="" /> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="container">
+                      <div class="box">
+                        <div class="row">
+                          <div class="col-md-7">
+                            <div class="detail-box">
+                              <div>
+                                <h1>
+                                  Digital Currency
+                                </h1>
+                                <h2>
+                                  The Future of Trading.
+                                </h2>
+                                <div class="">
+                                  <a href="">
+                                    Get Started
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <div class="img-box">
+                       <!--        <img src={{url_for('static', filename='slider-img.png')}} alt="" /> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- end slider section -->
+          </div>
+{{ super() }}
+    <section class="flask_backend_content">
+      <div>
+        <h1>Hi, {{ current_user.username }}!</h1>
 
-    {% if form %}
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.post.label }}<br>
-            {{ form.post(cols=32, rows=4) }}<br>
-            {% for error in form.post.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-            <p>{{ form.submit() }}</p>
-        </p>
-    </form>
-    {% endif %}
-    {% for post in posts %}
-        {% include '_post.html' %}
-    {% endfor %}
-    {% if prev_url %}
-    <a href="{{ prev_url }}"><--- Newer</a>
-    {% endif %}
-    {% for page_number in range(number_of_pages) %}
-        {% if page_number + 1 == current_page %}
-            <font size="5">  <b>{{ page_number + 1}}</b></font> ..
-        {% else %}
-            <a href="{{ pages_list[page_number] }}">  {{page_number + 1}}  </a>..
+        {% if form %}
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.post.label }}<br>
+                {{ form.post(cols=32, rows=4) }}<br>
+                {% for error in form.post.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <p>{{ form.submit() }}</p>
+            </p>
+        </form>
         {% endif %}
-    {% endfor %}
-    {% if next_url %}
-    <a href="{{ next_url }}">Older ---></a>
-    {% endif %}<br>
+        {% for post in posts %}
+            {% include '_post.html' %}
+        {% endfor %}
+        {% if prev_url %}
+        <a href="{{ prev_url }}"><--- Newer</a>
+        {% endif %}
+        {% for page_number in range(number_of_pages) %}
+            {% if page_number + 1 == current_page %}
+                <font size="5">  <b>{{ page_number + 1}}</b></font> ..
+            {% else %}
+                <a href="{{ pages_list[page_number] }}">  {{page_number + 1}}  </a>..
+            {% endif %}
+        {% endfor %}
+        {% if next_url %}
+        <a href="{{ next_url }}">Older ---></a>
+        {% endif %}<br>
+
+      </div>
+    </section>
 {% endblock %}

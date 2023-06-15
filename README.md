@@ -56,7 +56,7 @@ services:
     ports:
       - 8080:8080
 ```
-8. Run the container by launching the following command inside the postgres_container:
+8. Run the container by launching the following command inside the 'postgres_container' directory:
 ```
 docker compose up
 ```

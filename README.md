@@ -32,7 +32,7 @@ uid=1001(postgres) gid=1002(postgres) groups=1002(postgres),1001(docker)
 mkdir -p /home/postgres/postgres_container
 cd /home/postgres/postgres_container
 ```
-9. Create the 'docker-compose.yml' file:
+9. Create the 'docker-compose.yml' file, remeber to put your values inside the <...> fields:
 ```
 version: '3.1'
 

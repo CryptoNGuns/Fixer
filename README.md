@@ -65,18 +65,31 @@ docker compose up
 # Installation and configuration of Flask :
 Create virtual environment in your python setup:
 0. pwd -> (should return): ||SOMETHING||/Fixer
-2. cd ./run
-3. python3 -m venv venv
-4. virtualenv -p python3 venv
-5. source venv/bin/activate
-6. (venv) $ pip install flask flask-wtf flask-sqlalchemy flask-migrate psycopg2-binary flask-login email-validator flask-socketio python-dotenv
-7. (venv) flask db upgrade
-
-
-Set database URL - create a new environment variable called DATABASE_URL as below, but put your database credential inside <...> fields
+```pwd```
+1. Create and navigate to the './run' directory
+```
+mkdir -p ./run
+cd ./run
+```
+2. Create, configure and activate the virtual environment:
+```
+python3 -m venv venv
+virtualenv -p python3 venv
+source venv/bin/activate
+```
+8. Install dependencies:
+```
+(venv) $ pip install flask flask-wtf flask-sqlalchemy flask-migrate psycopg2-binary flask-login email-validator flask-socketio python-dotenv
+```
+9. Set database URL - create a new environment variable called DATABASE_URL as below, but put your database credential inside <...> fields
 ```
 (venv) $ export DATABASE_URL="postgresql://fixer:<FIXER_USER_PASSWORD>@<DATABASE_IP>:<DATABASE_PORT>/fixer_db"
 ```
+10. Initialize the database
+```(venv) flask db upgrade```
+
+
+
 # Run
 ```
 (venv) $ flask run --host=0.0.0.0 -p 1990

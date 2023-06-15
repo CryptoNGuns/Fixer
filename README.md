@@ -83,7 +83,7 @@ source venv/bin/activate
 ```
 9. Set database URL - create a new environment variable called DATABASE_URL as below, but put your database credential inside <...> fields
 ```
-(venv) $ export DATABASE_URL="postgresql://fixer:<FIXER_USER_PASSWORD>@<DATABASE_IP>:<DATABASE_PORT>/fixer_db"
+(venv) $ export DATABASE_URL="postgresql://fixer:<FIXER_USER_PASSWORD>@<DATABASE_IP>:5432/fixer_db"
 ```
 10. Initialize the database
 ```

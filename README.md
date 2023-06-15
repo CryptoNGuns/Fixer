@@ -85,8 +85,9 @@ source venv/bin/activate
 ```
 (venv) $ export DATABASE_URL="postgresql://fixer:<FIXER_USER_PASSWORD>@<DATABASE_IP>:5432/fixer_db"
 ```
-10. Initialize the database
+10. Initialize the database in the main directory
 ```
+cd ..
 (venv) flask db upgrade
 ```
 

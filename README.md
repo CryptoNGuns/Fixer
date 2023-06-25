@@ -79,7 +79,7 @@ source venv/bin/activate
 ```
 8. Install dependencies:
 ```
-(venv) $ pip install flask flask-wtf flask-sqlalchemy flask-migrate psycopg2-binary flask-login email-validator flask-socketio python-dotenv
+(venv) $ pip install flask flask-wtf flask-sqlalchemy flask-migrate psycopg2-binary flask-login email-validator flask-socketio python-dotenv elasticsearch
 ```
 9. Set database URL - create a new environment variable called DATABASE_URL as below, but put your database credential inside <...> fields
 ```

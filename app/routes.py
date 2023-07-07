@@ -6,6 +6,10 @@ from app.forms import LoginForm, RegistrationForm, EditProfile, EmptyForm, PostF
 from app.models import User, Post
 from datetime import datetime
 from flask_socketio import SocketIO
+from flask import g
+from app.forms import SearchForm
+from flask_babel import get_locale
+from flask_babel import _
 
 socketio = SocketIO(app)
 
@@ -57,11 +61,12 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 @app.before_request
-def before_request_func():
+def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
-        db.session.add(current_user)
         db.session.commit()
+        g.search_form = SearchForm()
+    g.locale = str(get_locale())
 
 @app.route('/logout')
 def logout():
@@ -179,6 +184,21 @@ def explore():
 
     return render_template('index.html', title='Explore', posts=posts, next_url=next_url, prev_url=prev_url, number_of_pages=number_of_pages,
                            pages_list=pages_list, current_page=page)
+
+@app.route('/search')
+@login_required
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for('main.explore'))
+    page = request.args.get('page', 1, type=int)
+    posts, total = Post.search(g.search_form.q.data, page,
+                               app.config['POSTS_PER_PAGE'])
+    next_url = url_for('search', q=g.search_form.q.data, page=page + 1) \
+        if total > page * app.config['POSTS_PER_PAGE'] else None
+    prev_url = url_for('search', q=g.search_form.q.data, page=page - 1) \
+        if page > 1 else None
+    return render_template('search.html', title=_('Search'), posts=posts,
+                           next_url=next_url, prev_url=prev_url)
 
 
 @app.route('/websocket')

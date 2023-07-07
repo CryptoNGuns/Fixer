@@ -5,11 +5,22 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 import logging
 from logging.handlers import RotatingFileHandler
+from elasticsearch import Elasticsearch
 import os
+from flask import request
+from flask_babel import Babel
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
+babel = Babel(app)
+def get_locale():
+    #return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return 'pl'
+babel.init_app(app, locale_selector=get_locale)
+
+app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']],ca_certs="./security/elastic_http_ca.crt",basic_auth=("elastic", app.config['ELASTIC_PASSWORD'])) \
+    if app.config['ELASTICSEARCH_URL'] else None
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -31,8 +42,6 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Fixer startup')
-	
-	
-	
+
 	
 from app import routes, models, errors

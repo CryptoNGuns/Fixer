@@ -2,7 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
 from app.models import User
-
+from flask import request
+from flask_babel import _, lazy_gettext as _l
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -54,3 +55,13 @@ class PostForm(FlaskForm):
         DataRequired(), Length(min=1, max=140)
     ])
     submit = SubmitField('Submit')
+
+class SearchForm(FlaskForm):
+    q = StringField(_l('Szukaj na portalu'), validators=[DataRequired()])
+
+    def __init__(self, *args, **kwargs):
+        if 'formdata' not in kwargs:
+            kwargs['formdata'] = request.args
+        if 'meta' not in kwargs:
+            kwargs['meta'] = {'csrf': False}
+        super(SearchForm, self).__init__(*args, **kwargs)

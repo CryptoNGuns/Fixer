@@ -1,4 +1,4 @@
-from flask import render_template,flash , redirect, url_for, request
+from flask import render_template,flash , redirect, url_for, request, current_app
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
@@ -65,7 +65,15 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
-        g.search_form = SearchForm()
+
+        #this try and catch block hides search window when elasticsearch is not working properly
+        try:
+            if app.elasticsearch.info() is None:
+                g.search_form = None
+            else:
+                g.search_form = SearchForm()
+        except Exception:
+            pass
     g.locale = str(get_locale())
 
 @app.route('/logout')

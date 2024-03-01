@@ -1,11 +1,3 @@
-Fixer.cy - my side business webpage source code
--09.06.2023 - fixer.cy page is down due to hosting change -
-
- Q: Why do I share it to you?
-
- A: Actually, I am sharing it to my potential PRIMARY business partners (who are looking for skilled DevOPS engineers) to show them my Python/SQLAlchemy/Postgres skills level :) But if you find my code useful, feel free to explore and use it!
-
-
 # Prerequisites:
 0. Linux/MacOS/WSL 2
 1. Python3
